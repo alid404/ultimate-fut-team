@@ -71,7 +71,21 @@ html {
   background: linear-gradient(to top, #000000, #00000055);
 }
 
+.main-content .team-container {
+  padding-top: 7rem;
+  position: relative;
+  display: flex;
+  z-index: 3;
+}
 
+.main-content .team-container .team-lineup {
+  width: 65%;
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  padding-top: 80px;
+  padding-bottom: 150px;
+}
 
 .main-content .team-container .team-lineup .player-roster-content {
   position: relative;
@@ -344,7 +358,32 @@ html {
   margin-bottom: 1rem;
 }
 
+.team-management-content input,
+.team-management-content select {
+  width: 100%;
+  height: 4.5rem;
+  background-color: var(--color-secondary);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--color-text-placeholder);
+  color: var(--color-text-placeholder);
+  outline: none;
+  margin-top: 1rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
 
+.team-management-content input:focus,
+.team-management-content select:focus {
+  border: 0.2rem solid var(--color-text-primary);
+}
+
+.team-management-content .player-addition {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
 
 .team-management-content .player-creation-form form {
   display: flex;
