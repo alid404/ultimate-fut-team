@@ -1,0 +1,366 @@
+:root {
+  --color-dark: #000000;
+  --color-secondary: #333333;
+  --color-transparent: rgba(0, 0, 0, 0.5);
+  --color-text-primary: #ffffff;
+  --color-text-placeholder: #999999;
+  
+  --fz-xxs: 0.8rem;
+  --fz-xs: 1rem;
+  --fz-sm: 1.2rem;
+  --fz-md: 1.4rem;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  font-size: 10px;
+  height: 100%;
+  background: url('images/stadium_background.webp') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+.header-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7rem;
+  background-color: var(--color-dark);
+  padding: 0 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10042;
+}
+
+.header-content .logo img {
+  width: 50px;
+}
+
+.main-content {
+  width: 100%;
+}
+
+.main-content .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  background: url("images/stadium_background.webp");
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.main-content .overlay::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #000000, #00000055);
+}
+
+
+
+.main-content .team-container .team-lineup .player-roster-content {
+  position: relative;
+  width: 680px;
+  background-color: var(--color-secondary);
+  box-shadow: 0 0 20px 10px #00000055;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+    ". left-attacking-winger left-attacking-winger forward forward right-attacking-winger right-attacking-winger ."
+    ". left-center-midfielder left-center-midfielder defensive-midfielder defensive-midfielder right-center-midfielder right-center-midfielder ."
+    "left-back left-back center-left-back center-left-back center-right-back center-right-back right-back right-back"
+    ". . . goalkeeper goalkeeper . . .";
+  gap: 3rem;
+  padding: 3rem;
+  transition: grid-template-areas 2s ease;
+}
+
+.main-content .team-container .team-lineup .player-roster-content:hover {
+  grid-template-areas:
+    ". left-attacking-winger left-attacking-winger forward forward right-attacking-winger right-attacking-winger ."
+    "left-center-midfielder left-center-midfielder defensive-midfielder defensive-midfielder right-center-midfielder right-center-midfielder center-right-back center-right-back"
+    ". left-back left-back center-left-back center-left-back right-back right-back ."
+    ". . . goalkeeper goalkeeper . . .";
+}
+
+.player-roster-content .team-player {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+.team-player .player-image {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.player-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.player-image .player-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* button style */
+.form-submit {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form-submit button {
+  width: 65%;
+  height: 5rem;
+  background: linear-gradient(140deg, #7b1fa2, hwb(150 10% 10%), hsl(0, 50%, 10%));
+  color: black;
+  font-size: large;
+  border: 0.1rem solid var(--color-text-placeholder);
+  border-radius: 0.5rem;
+  font-size: var(--fz-sm);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-submit button:hover {
+  border: 0.2rem solid var(--color-text-primary);
+  color: var(--color-text-primary);
+}
+
+.form-submit button:focus {
+  outline: none;
+  border: 0.2rem solid var(--color-text-primary);
+}
+
+.player-details .player-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.player-details .player-rating {
+  position: absolute;
+  top: 2.7rem;
+  left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.player-rating .rating-value {
+  font-size: var(--fz-md);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.player-rating .rating-position {
+  font-size: var(--fz-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.player-details .player-information {
+  position: absolute;
+  bottom: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: var(--color-text-primary);
+}
+
+
+.player-stats-list ul li span:last-child {
+  font-weight: 700;
+  font-size: var(--fz-xs);
+}
+
+.player-information .player-metadata ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.player-metadata ul li {
+  list-style-type: none;
+}
+
+.player-metadata ul li img {
+  width: 10px;
+  height: 10px;
+  object-fit: fill;
+}
+
+/* Squad player positions */
+#goalkeeper {
+  grid-area: goalkeeper;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#right-back {
+  grid-area: right-back;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#center-right-back {
+  grid-area: center-right-back;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#center-left-back {
+  grid-area: center-left-back;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#left-back {
+  grid-area: left-back;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#right-center-midfielder {
+  grid-area: right-center-midfielder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#defensive-midfielder {
+  grid-area: defensive-midfielder;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#left-center-midfielder {
+  grid-area: left-center-midfielder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#right-attacking-winger {
+  grid-area: right-attacking-winger;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#forward {
+  grid-area: forward;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#left-attacking-winger {
+  grid-area: left-attacking-winger;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-roster-content .pitch-lines {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pitch-lines img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-container .team-management {
+  height: 100vh;
+  width: 35%;
+  background: linear-gradient(140deg, #7b1fa2, hwb(150 10% 10%), hsl(0, 50%, 10%));
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding-top: 7rem;
+}
+
+.team-management .team-management-content {
+  width: 100%;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.team-management-content h3 {
+  font-size: var(--fz-md);
+  color: var(--color-text-primary);
+}
+
+.team-management-content label {
+  font-size: var(--fz-sm);
+  color: var(--color-text-placeholder);
+  margin-bottom: 1rem;
+}
+
+
+
+.team-management-content .player-creation-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.player-creation-form form .form-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.team-management-content .substitutes-list ul {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
