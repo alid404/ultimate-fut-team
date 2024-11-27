@@ -119,4 +119,110 @@ document.addEventListener('DOMContentLoaded', () => {
     return isValid;
   }
 
-  
+  // Save player data to local storage
+  function savePlayerToLocalStorage(playerData) {
+    let players = JSON.parse(localStorage.getItem('players')) || [];
+    players.push(playerData);
+    localStorage.setItem('players', JSON.stringify(players));
+  }
+
+  addPlayerBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    if (validateForm()) {
+      const playerData = {
+        playerName: form.querySelector('input[name="player-name"]').value,
+        playerNationality: form.querySelector('input[name="player-nationality"]').value,
+        playerClub: form.querySelector('input[name="player-club"]').value,
+        playerLeague: form.querySelector('input[name="player-league"]').value,
+        playerPosition: form.querySelector('select[name="player-position"]').value,
+        pace: form.querySelector('input[name="player-pace"]').value,
+        shooting: form.querySelector('input[name="player-shooting"]').value,
+        passing: form.querySelector('input[name="player-passing"]').value,
+        dribbling: form.querySelector('input[name="player-dribbling"]').value,
+        defending: form.querySelector('input[name="player-defending"]').value,
+        physical: form.querySelector('input[name="player-physical"]').value
+      };
+
+      const playerPicInput = form.querySelector('input[name="player-picture"]');
+      if (playerPicInput.files.length > 0) {
+        const reader = new FileReader();
+        reader.onloadend = function() {
+          playerData.playerPic = reader.result;
+          savePlayerToLocalStorage(playerData);
+          alert('Player added successfully!');
+          form.reset();
+          clearErrorMessages();
+          updateSubstitutesList();
+        };
+        reader.readAsDataURL(playerPicInput.files[0]);
+      } else {
+        savePlayerToLocalStorage(playerData);
+        alert('Player added successfully!');
+        form.reset();
+        clearErrorMessages();
+        updateSubstitutesList();
+      }
+    }
+  });
+
+  const inputs = form.querySelectorAll('input, select');
+  inputs.forEach(input => {
+    input.addEventListener('input', () => {
+      if (input.value.trim() !== '') {
+        const errorEl = input.nextElementSibling;
+        if (errorEl && errorEl.classList.contains('error-message')) {
+          errorEl.textContent = '';
+          errorEl.style.display = 'none';
+        }
+      }
+    });
+  });
+});
+
+// substitute function manager 
+document.addEventListener('DOMContentLoaded', () => {
+  function updateSubstitutesList() {
+    const substitutesList = document.querySelector('.substitutes-list');
+    
+    if (!substitutesList) {
+      console.error('Substitutes list container not found');
+      return;
+    }
+    substitutesList.innerHTML = '';
+
+    const players = JSON.parse(localStorage.getItem('players')) || [];
+
+    players.slice(0, 10).forEach(player => {
+      const substituteSlot = document.createElement('div');
+      substituteSlot.classList.add('substitute-player');
+      
+      const playerImg = document.createElement('img');
+      playerImg.src = player.playerPic || 'pictures/template-3.png';
+      playerImg.width = 70;
+      playerImg.alt = player.playerName;
+      
+      substituteSlot.appendChild(playerImg);
+      substitutesList.appendChild(substituteSlot);
+    });
+
+    while (substitutesList.children.length < 10) {
+      const emptySlot = document.createElement('div');
+      emptySlot.classList.add('substitute-player');
+      
+      const placeholderImg = document.createElement('img');
+      placeholderImg.src = 'pictures/template-3.png';
+      placeholderImg.width = 70;
+      placeholderImg.alt = 'Empty Substitute Slot';
+      
+      emptySlot.appendChild(placeholderImg);
+      substitutesList.appendChild(emptySlot);
+    }
+  }
+
+  updateSubstitutesList();
+
+  window.addEventListener('storage', updateSubstitutesList);
+
+  window.updateSubstitutesList = updateSubstitutesList;
+});
