@@ -226,3 +226,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.updateSubstitutesList = updateSubstitutesList;
 });
+
+// function to change the formation of players 
+document.addEventListener('DOMContentLoaded', () => {
+  const formation = document.querySelector('.team-formation select');
+  const playerRoster = document.querySelector('.player-roster-content');
+
+  if (!formation || !playerRoster) {
+    console.error('Formation selector or player roster not found');
+    return;
+  }
+
+  formation.addEventListener('change', (e) => {
+    const selectedFormation = e.target.value;
+
+    switch (selectedFormation) {
+      case '4-3-3':
+        playerRoster.style.gridTemplateAreas = `
+          ". left-attacking-winger left-attacking-winger forward forward right-attacking-winger right-attacking-winger ."
+          ". left-center-midfielder left-center-midfielder defensive-midfielder defensive-midfielder right-center-midfielder right-center-midfielder ."
+          "left-back left-back center-left-back center-left-back center-right-back center-right-back right-back right-back"
+          ". . . goalkeeper goalkeeper . . ."
+        `;
+        playerRoster.style.gridTemplateColumns = 'repeat(8, 1fr)';
+        break;
+      
+      case '3-5-2':
+        playerRoster.style.gridTemplateAreas = `
+          ". . . forward forward right-attacking-winger right-attacking-winger . . ."
+          "left-attacking-winger left-attacking-winger left-center-midfielder left-center-midfielder defensive-midfielder defensive-midfielder right-center-midfielder right-center-midfielder center-right-back center-right-back"
+          ". . left-back left-back center-left-back center-left-back right-back right-back . ."
+          ". . . . goalkeeper goalkeeper . . . ."
+        `;
+        playerRoster.style.gridTemplateColumns = 'repeat(10, 1fr)';
+        break;
+      
+      default:
+        console.warn('Unknown formation selected');
+    }
+  });
+});
+
