@@ -212,6 +212,34 @@ html {
   color: var(--color-text-primary);
 }
 
+.player-information .player-name {
+  display: flex;
+  justify-content: center;
+}
+
+.player-name span {
+  font-size: var(--fz-md);
+  font-weight: 600;
+  line-height: 1;
+  text-shadow: 1px 1px #0000006c;
+}
+
+.player-information .player-stats-list ul {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.player-stats-list ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.player-stats-list ul li span {
+  font-size: var(--fz-xxs);
+  line-height: 1;
+}
 
 .player-stats-list ul li span:last-child {
   font-weight: 700;
