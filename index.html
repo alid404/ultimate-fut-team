@@ -4,345 +4,201 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Ultimate Team</title>
+    <title>Fut Team</title>
   </head>
   <body>
-    <main class="main-content">
-      <div class="team-container">
-        <div class="team-lineup">
-          <div class="player-roster">
-            <div class="player-roster-content">
-             
-              <div id="goalkeeper" class="team-player">
-                <div class="player-image">
-                  <img
-                    src="images/template-3.png"
-                    width="100px"
-                    alt=""
-                  />
-                </div>
-                <div class="player-details"></div>
-              </div>
-              <div id="right-back" class="team-player">
-                <div class="player-image">
-                  <img
-                    src="images/template-3.png"
-                    width="100px"
-                    alt=""
-                  />
-                </div>
-                <div class="player-details"></div>
-              </div>
-              <div id="center-right-back" class="team-player">
-                <div class="player-image">
-                  <img
-                    src="images/template-3.png"
-                    width="100px"
-                    alt=""
-                  />
-                </div>
-                <div class="player-details"></div>
-              </div>
-              <div id="center-left-back" class="team-player">
-                <div class="player-image">
-                  <img
-                    src="images/template-3.png"
-                    width="100px"
-                    alt=""
-                  />
-                </div>
-                <div class="player-details"></div>
-              </div>
-              <div id="left-back" class="team-player">
-                <div class="player-image">
-                  <img
-                    src="images/template-3.png"
-                    width="100px"
-                    alt=""
-                  />
-                </div>
-                <div class="player-details"></div>
-              </div>
-              <div id="right-center-midfielder" class="team-player">
-                <div class="player-image">
-                  <img
-                    src="images/template-3.png"
-                    width="100px"
-                    alt=""
-                  />
-                </div>
-                <div class="player-details"></div>
-              </div>
-              <div id="defensive-midfielder" class="team-player">
-                <div class="player-image">
-                  <img
-                    src="images/template-3.png"
-                    width="100px"
-                    alt=""
-                  />
-                </div>
-                <div class="player-details"></div>
-              </div>
-              <div id="left-center-midfielder" class="team-player">
-                <div class="player-image">
-                  <img
-                    src="images/template-3.png"
-                    width="100px"
-                    alt=""
-                  />
-                </div>
-                <div class="player-details"></div>
-              </div>
-              <div id="right-attacking-winger" class="team-player">
-                <div class="player-image">
-                  <img
-                    src="images/template-3.png"
-                    width="100px"
-                    alt=""
-                  />
-                </div>
-                <div class="player-details"></div>
-              </div>
-              <div id="left-attacking-winger" class="team-player">
-                <div class="player-image">
-                  <img
-                    src="images/template-3.png"
-                    width="100px"
-                    alt=""
-                  />
-                </div>
-                <div class="player-details"></div>
-              </div>
-              <div id="forward" class="team-player">
-                <div class="player-image" draggable="true">
-                  <img
-                    src="images/template-3.png"
-                    width="120px"
-                    alt=""
-                  />
-                <div class="player-details">
-                  <div class="player-portrait">
-                    <img src="images/neymarx.png" alt="">
+    <header class="header__content">
+      <div class="setting__bar">
+        <i class="fa-solid fa-sliders"></i>
+      </div>
+    </header>
+    <main class="main__content">
+      <div class="main__container">
+        <div class="line__up">
+          <div class="squad__list">
+            <div class="squad__list-content" id="sortable_cards">
+              <div class="attackers">
+                <div id="squad__lat" class="squad__player" data-area="lat">
+                  <div class="player__card-pic">
+                    <img
+                      src="images/template-3.png"
+                      width="100px"
+                      alt=""
+                    />
                   </div>
-                  <div class="player-rating">
-                    <div class="rating-value">
-                      94
-                    </div>
-                    <div class="rating-position">
-                      ST
-                    </div>
+                </div>
+                <div id="squad__fat" class="squad__player" data-area="fat">
+                  <div class="player__card-pic" draggable="true">
+                    <img
+                      src="images/template-3.png"
+                      width="120px"
+                      alt=""
+                    />
                   </div>
-                  <div class="player-information">
-                    <div class="player-name">
-                      <span>Neymar</span>
-                    </div>
-                    <div class="player-stats-list">
-                      <ul>
-                        <li><span>PAC</span><span>91</span></li>
-                        <li><span>SHO</span><span>83</span></li>
-                        <li><span>PAS</span><span>85</span></li>
-                        <li><span>DRI</span><span>95</span></li>
-                        <li><span>DEF</span><span>37</span></li>
-                        <li><span>PHY</span><span>62</span></li>                        
-                      </ul>
-                    </div>
-                    <div class="player-metadata">
-                      <ul>
-                        <li><img src="images/france.png" alt="" id="player-nationality"></li>
-                        <li><img src="images/premier-league.png" alt="" id="player-league"></li>
-                        <li><img src="images/barcelona.png" alt="" id="player-club"></li>
-                      </ul>
-                    </div>
+                </div>
+                <div id="squad__rat" class="squad__player" data-area="rat">
+                  <div class="player__card-pic">
+                    <img
+                      src="images/template-3.png"
+                      width="100px"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
+              <div class="midifielder">
+                <div id="squad__lcm" class="squad__player" data-area="lcm">
+                  <div class="player__card-pic">
+                    <img
+                      src="images/template-3.png"
+                      width="100px"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div id="squad__cdm" class="squad__player" data-area="cdm">
+                  <div class="player__card-pic">
+                    <img
+                      src="images/template-3.png"
+                      width="100px"
+                      alt=""
+                    />
+                  </div>
+                </div>
 
+                <div id="squad__rcm" class="squad__player" data-area="rcm">
+                  <div class="player__card-pic">
+                    <img
+                      src="images/template-3.png"
+                      width="100px"
+                      alt=""
+                    />
+                  </div>
+                </div>
               </div>
-              <div class="pitch-lines">
-                <img src="images/LINES.svg" alt="">
+              <div class="defenders">
+                <div id="squad__lb" class="squad__player" data-area="lb">
+                  <div class="player__card-pic">
+                    <img
+                      src="images/template-3.png"
+                      width="100px"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div id="squad__clb" class="squad__player" data-area="clb">
+                  <div class="player__card-pic">
+                    <img
+                      src="images/template-3.png"
+                      width="100px"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div id="squad__crb" class="squad__player" data-area="crb">
+                  <div class="player__card-pic">
+                    <img
+                      src="images/template-3.png"
+                      width="100px"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div id="squad__rb" class="squad__player" data-area="rb">
+                  <div class="player__card-pic">
+                    <img
+                      src="images/template-3.png"
+                      width="100px"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="goolkeeper">
+                <div id="squad__gk" class="squad__player" data-area="gk">
+                  <div class="player__card-pic">
+                    <img
+                      src="images/template-3.png"
+                      width="100px"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="stadium__lines">
+                <img src="./images/LINES.svg" alt="" />
               </div>
             </div>
           </div>
         </div>
-        <div class="team-management">
-          <div class="team-management-content">
-
-            <div class="team-formation">
+        <div class="substitutes">
+          <div class="sub__heading">
+            <h3>Substitutes</h3>
+          </div>
+          <div class="substitutes__list">
+            <div id="substitutes__list" class="pitch">
+              <div class="player__card-pic">
+                <img
+                  src="images/template-3.png"
+                  width="100px"
+                  alt=""
+                />
+              </div>
+              <div class="player__card-pic">
+                <img
+                  src="images/template-3.png"
+                  width="100px"
+                  alt=""
+                />
+              </div>
+              <div class="player__card-pic">
+                <img
+                  src="images/template-3.png"
+                  width="100px"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="player__state">
+          <div class="player__state-content">
+            <div class="squad__formation">
               <h3>Formation</h3>
-              <select name="formation" id="team-formation">
-                <option value="4-3-3">4-3-3</option>
-                <option value="3-5-2">3-5-2</option>
+              <select name="formation" id="formation">
+                <option value="433">433</option>
+                <option value="442">442</option>
               </select>
             </div>
-            <div class="player-addition">
+            <div class="add__player">
               <div class="">
                 <h3>Add Player</h3>
-                <select name="player-type" id="player-type">
-                  <option disabled selected>Select Player type</option>
-                  <option value="outfield-player">Outfield Player</option>
-                  <option value="goalkeeper">Goalkeeper</option>
-                </select>
               </div>
-
-              <div class="player-creation-form">
-                <form action="">
-                  <div class="form-row">
-                    <div class="player-name-input">
-                      <label for="player-full-name">Player Name</label>
-                      <input type="text" name="player-full-name" id="player-full-name" placeholder="Full Name">
+              <div class="o-p-form" id="o-p-form">
+                <form action="" id="player__form">
+                  <div class="row">
+                    <div class="player__name input__con">
+                      <label for="o-player-name">Name</label>
+                      <input
+                        type="text"
+                        name="o-player-name"
+                        id="o-player-name"
+                        placeholder="Name"
+                      />
+                      <p class="name__error"></p>
                     </div>
-                    <div class="player-nationality-input">
-                      <label for="player-nationality">Player Nationality</label>
-                  <input type="text" name="player-nationality" id="player-nationality" placeholder="Nationality">
-                    </div>
-                    <div class="player-picture-input">
-                      <label for="player-picture">Picture</label>
-                      <input type="file" name="player-picture" id="player-picture">
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="player-club-input">
-                      <label for="player-club">Player Club</label>
-                      <input type="text" name="player-club" id="player-club" placeholder="Club">
-                    </div>
-                    <div class="player-league-input">
-                      <label for="player-league">Player League</label>
-                      <input type="text" name="player-league" id="player-league" placeholder="League">
-                    </div>
-                    <div class="player-position-input">
-                      <label for="player-position">Player Position</label>
-                      <select name="player-position" id="player-position">
-                        <option disabled selected>Position</option>
-                        <option value="center-left-back">Center Left Back</option>
-                        <option value="center-right-back">Center Right Back</option>
-                        <option value="left-back">Left Back</option>
-                        <option value="right-back">Right Back</option>
-                        <option value="right-central-midfielder">Right Central Midfielder</option>
-                        <option value="left-central-midfielder">Left Central Midfielder</option>
-                        <option value="attacking-midfielder">Attacking Midfielder</option>
-                        <option value="left-winger">Left Winger</option>
-                        <option value="right-winger">Right Winger</option>
-                        <option value="center-forward">Center Forward</option>
-                        <option value="substitute">Substitute</option>
+                    <div class="player__nationalite input__con">
+                      <label for="o-player-nationalite">Nationalite</label>
+                      <select
+                        name="o-player-nationalite"
+                        id="o-player-nationalite"
+                      >
+                        <option selected disabled>Nationalite</option>
+                        <option value="spain">Spanish</option>
+                        <option value="france">French</option>
+                        <option value="germany">Geramn</option>
+                        <option value="italy">Italian</option>
+                        <option value="england">English</option>
                       </select>
+                      <p class="nationalite__error"></p>
                     </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="player-pace-input">
-                      <label for="player-pace">Pace</label>
-                      <input type="number" name="player-pace" id="player-pace">
-                    </div>
-                    <div class="player-shooting-input">
-                      <label for="player-shooting">Shooting</label>
-                      <input type="number" name="player-shooting" id="player-shooting">
-                    </div>
-                    <div class="player-passing-input">
-                      <label for="player-passing">Passing</label>
-                      <input type="number" name="player-passing" id="player-passing">
-                    </div>
-                    <div class="player-dribbling-input">
-                      <label for="player-dribbling">Dribbling</label>
-                      <input type="number" name="player-dribbling" id="player-dribbling">
-                    </div>
-                    <div class="player-defending-input">
-                      <label for="player-defending">Defending</label>
-                      <input type="number" name="player-defending" id="player-defending">
-                    </div>
-                    <div class="player-physical-input">
-                      <label for="player-physical">Physical</label>
-                      <input type="number" name="player-physical" id="player-physical">
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="form-submit">
-              <button type="submit" id="add-player-button">Add Player</button>
-            </div>
-            <div class="team-substitutes">
-              <h3>Substitutes</h3>
-              <div class="substitutes-list">
-                <ul>
-                  <li class="substitute-player">
-                    <img
-                      src="images/template-3.png"
-                      width="70px"
-                      alt=""
-                    />
-                  </li>
-                  <li class="substitute-player">
-                    <img
-                      src="images/template-3.png"
-                      width="70px"
-                      alt=""
-                    />
-                  </li>
-                  <li class="substitute-player">
-                    <img
-                      src="images/template-3.png"
-                      width="70px"
-                      alt=""
-                    />
-                  </li>
-                  <li class="substitute-player">
-                    <img
-                      src="images/template-3.png"
-                      width="70px"
-                      alt=""
-                    />
-                  </li>
-                  <li class="substitute-player">
-                    <img
-                      src="images/template-3.png"
-                      width="70px"
-                      alt=""
-                    />
-                  </li>
-                  <li class="substitute-player">
-                    <img
-                      src="images/template-3.png"
-                      width="70px"
-                      alt=""
-                    />
-                  </li>
-                  <li class="substitute-player">
-                    <img
-                      src="images/template-3.png"
-                      width="70px"
-                      alt=""
-                    />
-                  </li>
-                  <li class="substitute-player">
-                    <img
-                      src="images/template-3.png"
-                      width="70px"
-                      alt=""
-                    />
-                  </li>
-                  <li class="substitute-player">
-                    <img
-                      src="images/template-3.png"
-                      width="70px"
-                      alt=""
-                    />
-                  </li>
-                  <li class="substitute-player">
-                    <img
-                      src="images/template-3.png"
-                      width="70px"
-                      alt=""
-                    />
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="overlay">
-        
-      </div>
-    </main>
-    <script src="script.js"></script>
-  </body>
-</html>
