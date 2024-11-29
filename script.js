@@ -1,4 +1,32 @@
-
+  // add player menu toggle 
+  
+  const addContent = document.querySelector(".player__state");
+  const barBtn = document.querySelector(".setting__bar");
+  
+  barBtn.addEventListener("click", ()=> {
+    addContent.classList.toggle("active")
+  })
+  
+  
+  const formation = document.querySelector("#formation");
+  const squadList = document.querySelector(".squad__list-content");
+  
+  const savedFormation = localStorage.getItem("formation");
+  if (savedFormation) {
+    formation.value = savedFormation;
+    updateFormationLayout(savedFormation);
+  }
+  
+  // Squad Formation
+  formation.addEventListener("change", (e) => {
+    const target = e.target.value;
+  
+    localStorage.setItem("formation", target);
+  
+    updateFormationLayout(target);
+  });
+  
+  //##########################//
 // playerForm fucntion
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('.team-management .player-creation-form form');
