@@ -25,6 +25,60 @@
   
     updateFormationLayout(target);
   });
+
+  function updateFormationLayout(target) {
+    const attackers = document.querySelector(".attackers");
+    const midfielders = document.querySelector(".midifielder");
+    switch (target) {
+      case "433":
+        if (attackers && midfielders) {
+          const attackerToMove = midfielders.querySelector(
+            "#squad__rat"
+          );
+          if (attackerToMove) {
+            midfielders.removeChild(attackerToMove);
+            attackers.appendChild(attackerToMove);
+            attackers.style.gridTemplateColumns = "repeat(3, 1fr)";
+            midfielders.style.gridTemplateColumns = "repeat(3, 1fr)";
+          } else {
+            console.error("No attackers available to move.");
+          }
+        } else {
+          console.error("Attackers or Midfielders div not found.");
+        }
+        break;
+  
+      case "442":
+        if (attackers && midfielders) {
+          const attackerToMove = attackers.querySelector(
+            "#squad__rat"
+          );
+          if (attackerToMove) {
+            attackers.removeChild(attackerToMove);
+            midfielders.appendChild(attackerToMove);
+            attackers.style.gridTemplateColumns = "repeat(2, 1fr)";
+            midfielders.style.gridTemplateColumns = "repeat(4, 1fr)";
+          } else {
+            console.error("No attackers available to move.");
+          }
+        } else {
+          console.error("Attackers or Midfielders div not found.");
+        }
+        break;
+    }
+  }
+  
+  let players = JSON.parse(localStorage.getItem("players")) || [];
+  
+  const savePlayers = () => {
+    localStorage.setItem("players", JSON.stringify(players));
+  };
+  
+  const selectPosition = document.querySelector("#o-player-position");
+  const stateLabels = document.querySelectorAll(".player__state-inp label");
+  const defaultContent = Array.from(stateLabels).map(
+    (label) => label.textContent
+  );
   
   //##########################//
 // playerForm fucntion
@@ -255,43 +309,5 @@ document.addEventListener('DOMContentLoaded', () => {
   window.updateSubstitutesList = updateSubstitutesList;
 });
 
-// function to change the formation of players 
-document.addEventListener('DOMContentLoaded', () => {
-  const formation = document.querySelector('.team-formation select');
-  const playerRoster = document.querySelector('.player-roster-content');
 
-  if (!formation || !playerRoster) {
-    console.error('Formation selector or player roster not found');
-    return;
-  }
-
-  formation.addEventListener('change', (e) => {
-    const selectedFormation = e.target.value;
-
-    switch (selectedFormation) {
-      case '4-3-3':
-        playerRoster.style.gridTemplateAreas = `
-          ". left-attacking-winger left-attacking-winger forward forward right-attacking-winger right-attacking-winger ."
-          ". left-center-midfielder left-center-midfielder defensive-midfielder defensive-midfielder right-center-midfielder right-center-midfielder ."
-          "left-back left-back center-left-back center-left-back center-right-back center-right-back right-back right-back"
-          ". . . goalkeeper goalkeeper . . ."
-        `;
-        playerRoster.style.gridTemplateColumns = 'repeat(8, 1fr)';
-        break;
-      
-      case '3-5-2':
-        playerRoster.style.gridTemplateAreas = `
-          ". . . forward forward right-attacking-winger right-attacking-winger . . ."
-          "left-attacking-winger left-attacking-winger left-center-midfielder left-center-midfielder defensive-midfielder defensive-midfielder right-center-midfielder right-center-midfielder center-right-back center-right-back"
-          ". . left-back left-back center-left-back center-left-back right-back right-back . ."
-          ". . . . goalkeeper goalkeeper . . . ."
-        `;
-        playerRoster.style.gridTemplateColumns = 'repeat(10, 1fr)';
-        break;
-      
-      default:
-        console.warn('Unknown formation selected');
-    }
-  });
-});
 

@@ -157,3 +157,265 @@ a {
   padding: 50px;
   gap: 60px;
 }
+
+.main__container .line__up .squad__list-content {
+  position: relative;
+  box-shadow: 0 0 20px 10px #00000055;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  height: max-content;
+  padding: 3rem;
+  transition: grid-template-areas 2s ease;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.main__container .line__up .squad__list-content .defenders {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__container .line__up .squad__list-content .midifielder {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__container .line__up .squad__list-content .attackers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  gap: 3rem;
+}
+
+.main__container .line__up .squad__list-content .squad__player {
+  position: relative;
+  z-index: 3;
+}
+
+.main__container .line__up .squad__list-content #squad__gk,
+.main__container .line__up .squad__list-content #squad__rb,
+.main__container .line__up .squad__list-content #squad__crb,
+.main__container .line__up .squad__list-content #squad__clb,
+.main__container .line__up .squad__list-content #squad__lb,
+.main__container .line__up .squad__list-content #squad__rcm,
+.main__container .line__up .squad__list-content #squad__cdm,
+.main__container .line__up .squad__list-content #squad__lcm,
+.main__container .line__up .squad__list-content #squad__rat,
+.main__container .line__up .squad__list-content #squad__fat,
+.main__container .line__up .squad__list-content #squad__lat {
+  width: max-content;
+  margin: 0 auto;
+}
+
+.main__container .line__up .squad__list-content .stadium__lines {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+}
+
+.main__container .line__up .squad__list-content .stadium__lines img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main__container .player__card-pic {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 180px;
+}
+
+.main__container .player__card-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.main__container .player__card-pic .player__stats {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.main__container .player__card-pic .player__stats .player__picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.main__container .player__card-pic .player__stats .player__setting.active .st__icon {
+  display: flex;
+  transform: scale(1);
+}
+
+.main__container .player__card-pic .player__stats .player__setting {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.main__container .player__card-pic .player__stats .player__setting .setting__icon:hover svg .cls-1 {
+  fill: #300fb3;
+}
+
+.main__container .player__card-pic .player__stats .player__setting .st__icon {
+  width: 30px;
+  height: 30px;
+  background-color: #4e28eb;
+  border-radius: 0.4rem;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 12px 1px #130353a1;
+  transform: scale(0.1);
+  transition: transform 0.4s ease;
+}
+
+.main__container .player__card-pic .player__stats .player__setting .st__icon:hover {
+  background-color: #300fb3;
+}
+
+.main__container .player__card-pic .player__stats .player__setting .st__icon svg {
+  fill: #5622b6;
+}
+
+.main__container .player__card-pic .player__stats .player__rating {
+  position: absolute;
+  top: 3rem;
+  left: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.main__container .player__card-pic .player__stats .player__rating .player__rating-rate {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.main__container .player__card-pic .player__stats .player__rating .player__rating-position {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.main__container .player__card-pic .player__stats .player__infos {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #fff;
+  background: linear-gradient(to top, transparent, #0c06bacf, transparent);
+  width: 85%;
+  padding: 2.5rem 0 2rem;
+}
+
+.main__container .player__card-pic .player__stats .player__infos .player__infos-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__container .player__card-pic .player__stats .player__infos .player__infos-name span {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  color: #fff;
+}
+
+.main__container .player__card-pic .player__stats .player__infos .player__infos-stats ul {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.main__container .player__card-pic .player__stats .player__infos .player__infos-stats ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.main__container .player__card-pic .player__stats .player__infos .player__infos-stats ul li span:first-child {
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.main__container .player__card-pic .player__stats .player__infos .player__infos-stats ul li span:last-child {
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.main__container .player__card-pic .player__stats .player__infos .player__infos-row ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.main__container .player__card-pic .player__stats .player__infos .player__infos-row ul li {
+  list-style-type: none;
+}
+
+.main__container .player__card-pic .player__stats .player__infos .player__infos-row ul li img {
+  width: 10px;
+  height: 10px;
+  object-fit: fill;
+}
+
+.main__container .player__state.active {
+  right: 0;
+}
+
+.main__container .player__state {
+  height: 100vh;
+  width: calc(35% + 50px);
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  transition: right .4s ease;
+  padding-top: 7rem;
+  z-index: 174837427;
+}
+
+.main__container .player__state .player__state-content {
+  width: 100%;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
