@@ -204,55 +204,76 @@
         playerForm.reset();
         location.reload();
       });
-  //##########################//
+  
 
-
-// substitute function manager 
-document.addEventListener('DOMContentLoaded', () => {
-  function updateSubstitutesList() {
-    const substitutesList = document.querySelector('.substitutes-list');
-    
-    if (!substitutesList) {
-      console.error('Substitutes list container not found');
-      return;
-    }
-    substitutesList.innerHTML = '';
-
-    const players = JSON.parse(localStorage.getItem('players')) || [];
-
-    players.slice(0, 10).forEach(player => {
-      const substituteSlot = document.createElement('div');
-      substituteSlot.classList.add('substitute-player');
+      const deletePlayer = (playerId) => {
+        const playerIndex = players.findIndex((player) => player.id === playerId);
+        if (playerIndex !== -1) {
+          players.splice(playerIndex, 1);
+          savePlayers();
+          // location.reload();
+          const playerCard = document
+            .querySelector(`[data-id="${playerId}"]`)
+            .closest(".player__card-pic");
+          playerCard.innerHTML = `
+          <img src="images/template-1.webp" width="100px" alt=""/>
+          `;
+        }
+      };
       
-      const playerImg = document.createElement('img');
-      playerImg.src = player.playerPic || 'pictures/template-3.png';
-      playerImg.width = 70;
-      playerImg.alt = player.playerName;
+      const editPlayer = (playerId) => {
+        const player = players.find((player) => player.id === playerId);
+        if (player) {
+          document.getElementById("o-player-name").value = player.name;
+          document.getElementById("o-player-nationalite").value = player.nationalite;
+          document.getElementById("o-player-club").value = player.club;
+          document.getElementById("o-player-league").value = player.league;
+          document.getElementById("o-player-position").value = player.position;
+          document.getElementById("o-player-pace").value = player.pace;
+          document.getElementById("o-player-shooting").value = player.shooting;
+          document.getElementById("o-player-passing").value = player.passing;
+          document.getElementById("o-player-dribbling").value = player.dribbling;
+          document.getElementById("o-player-defending").value = player.defending;
+          document.getElementById("o-player-physical").value = player.physical;
+          document.getElementById("o-player-rating").value = player.rating;
       
-      substituteSlot.appendChild(playerImg);
-      substitutesList.appendChild(substituteSlot);
-    });
-
-    while (substitutesList.children.length < 10) {
-      const emptySlot = document.createElement('div');
-      emptySlot.classList.add('substitute-player');
+          const addPlayerButton = document.querySelector(".add__player-btn");
+          const updatePlayerButton = document.querySelector(".update__player");
+          addPlayerButton.style.display = "none";
+          updatePlayerButton.style.display = "block";
+          addContent.classList.toggle("active")
       
-      const placeholderImg = document.createElement('img');
-      placeholderImg.src = 'pictures/template-3.png';
-      placeholderImg.width = 70;
-      placeholderImg.alt = 'Empty Substitute Slot';
       
-      emptySlot.appendChild(placeholderImg);
-      substitutesList.appendChild(emptySlot);
-    }
-  }
-
-  updateSubstitutesList();
-
-  window.addEventListener('storage', updateSubstitutesList);
-
-  window.updateSubstitutesList = updateSubstitutesList;
-});
-
-
-
+          updatePlayer.addEventListener("click", (e) => {
+            e.preventDefault();
+      
+            if (!validationForm()) {
+              return;
+            }
+      
+            player.name = document.getElementById("o-player-name").value;
+            player.nationalite = document.getElementById(
+              "o-player-nationalite"
+            ).value;
+            player.club = document.getElementById("o-player-club").value;
+            player.league = document.getElementById("o-player-league").value;
+            player.position = document.getElementById("o-player-position").value;
+            player.pace = document.getElementById("o-player-pace").value;
+            player.shooting = document.getElementById("o-player-shooting").value;
+            player.passing = document.getElementById("o-player-passing").value;
+            player.dribbling = document.getElementById("o-player-dribbling").value;
+            player.defending = document.getElementById("o-player-defending").value;
+            player.physical = document.getElementById("o-player-physical").value;
+            player.rating = document.getElementById("o-player-rating").value;
+      
+            addPlayerButton.style.display = "block";
+            updatePlayerButton.style.display = "none";
+            savePlayers();
+            showPlayerCard();
+            location.reload()
+            playerForm.reset();
+          });
+        }
+      };
+      
+      // show player card function
