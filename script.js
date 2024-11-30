@@ -79,6 +79,63 @@
   const defaultContent = Array.from(stateLabels).map(
     (label) => label.textContent
   );
+
+  selectPosition.addEventListener("change", (e) => {
+    let target = e.target;
+    let getValue = target.value;
+  
+    if (getValue === "gk") {
+      const convert = [
+        "Diving",
+        "Handling",
+        "Kicking",
+        "Reflexes",
+        "Speed",
+        "Positioning",
+      ];
+      stateLabels.forEach((label, index) => {
+        if (index < convert.length) {
+          label.textContent = convert[index];
+        }
+      });
+    } else {
+      stateLabels.forEach((label, index) => {
+        label.textContent = defaultContent[index];
+      });
+    }
+  });
+  
+  // Form validation function
+  function validationForm() {
+    const nameInput = document.getElementById("o-player-name");
+    const name = nameInput.value.trim();
+    const nameRegex = /^[A-Za-z\s]+$/;
+    const nameError = document.querySelector(".name__error");
+  
+    const selects = [
+      { id: "o-player-nationalite", error: ".nationalite__error" },
+      { id: "o-player-club", error: ".club__error" },
+      { id: "o-player-league", error: ".league__error" },
+      { id: "o-player-position", error: ".position__error" },
+    ];
+  
+    const stats = [
+      { id: "o-player-rating", error: ".rating__error" },
+      { id: "o-player-pace", error: ".pace__error" },
+      { id: "o-player-shooting", error: ".shooting__error" },
+      { id: "o-player-passing", error: ".passing__error" },
+      { id: "o-player-dribbling", error: ".dribbling__error" },
+      { id: "o-player-defending", error: ".defending__error" },
+      { id: "o-player-physical", error: ".physical__error" },
+    ];
+  
+    nameError.textContent = "";
+    selects.forEach(select => {
+      document.querySelector(select.error).textContent = "";
+    });
+    stats.forEach(stat => {
+      document.querySelector(stat.error).textContent = "";
+    });
   
   //##########################//
 // playerForm fucntion
@@ -105,33 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return errorElement;
   }
 
-  function clearErrorMessages() {
-    const errorMessages = form.querySelectorAll('.error-message');
-    errorMessages.forEach(el => {
-      el.textContent = '';
-      el.style.display = 'none';
-    });
-  }
-
-  // Validate form for all of the form inputs
-  function validateForm() {
-    clearErrorMessages();
-    let isValid = true;
-
-    const inputs = {
-      playerName: form.querySelector('input[name="player-name"]'),
-      playerNationality: form.querySelector('input[name="player-nationality"]'),
-      playerClub: form.querySelector('input[name="player-club"]'),
-      playerLeague: form.querySelector('input[name="player-league"]'),
-      playerPosition: form.querySelector('select[name="player-position"]'),
-      playerPic: form.querySelector('input[name="player-picture"]'),
-      pace: form.querySelector('input[name="player-pace"]'),
-      shooting: form.querySelector('input[name="player-shooting"]'),
-      passing: form.querySelector('input[name="player-passing"]'),
-      dribbling: form.querySelector('input[name="player-dribbling"]'),
-      defending: form.querySelector('input[name="player-defending"]'),
-      physical: form.querySelector('input[name="player-physical"]')
-    };
 
     const validations = {
       playerName: {
