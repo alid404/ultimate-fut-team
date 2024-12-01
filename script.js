@@ -461,3 +461,92 @@
                           </div>
                         </div>
           `;
+
+          const playerPosition = (positionId, playerCard) => {
+            const positionElement = document.getElementById(positionId);
+            if (positionElement.classList.contains("active")) {
+              substitute.appendChild(playerCard);
+            } else {
+              player.occupeid = true; // Mark as occupied
+              positionElement.classList.add("active");
+              positionElement.innerHTML = "";
+              positionElement.appendChild(playerCard);
+            }
+          };
+      
+          switch (player.position) {
+            case "gk":
+              playerPosition("squad__gk", playerCard);
+              const courtois = document.querySelector("#squad__gk .player__picture-sr");
+              courtois.src = "./images/courtois.webp";
+              break;
+            case "clb":
+              playerPosition("squad__clb", playerCard);
+              const alaba = document.querySelector("#squad__clb .player__picture-sr");
+              alaba.src = "./images/alaba.webp";
+              break;
+            case "crb":
+              playerPosition("squad__crb", playerCard);
+              const eder = document.querySelector("#squad__crb .player__picture-sr");
+              eder.src = "./images/eder.webp";
+              break;
+            case "lb":
+              playerPosition("squad__lb", playerCard);
+              const davies = document.querySelector("#squad__lb .player__picture-sr");
+              davies.src = "./images/davies.webp";
+              break;
+            case "rb":
+              playerPosition("squad__rb", playerCard);
+              const arnlod = document.querySelector("#squad__rb .player__picture-sr");
+              arnlod.src = "./images/arnlod.webp";
+              break;
+            case "rcm":
+              playerPosition("squad__rcm", playerCard);
+              const valverde = document.querySelector("#squad__rcm .player__picture-sr");
+              valverde.src = "./images/valverde-2.webp";
+              break;
+            case "lcm":
+              playerPosition("squad__lcm", playerCard);
+              const modric = document.querySelector("#squad__lcm .player__picture-sr");
+              modric.src = "./images/modric.webp";
+              break;
+            case "am":
+              playerPosition("squad__cdm", playerCard);
+              const jude = document.querySelector("#squad__cdm .player__picture-sr");
+              jude.src = "./images/jude.webp";
+              break;
+            case "lw":
+              playerPosition("squad__lat", playerCard);
+              const vini = document.querySelector("#squad__lat .player__picture-sr");
+              vini.src = "./images/vini.webp";
+              break;
+            case "rw":
+              playerPosition("squad__rat", playerCard);
+              const rodrygo = document.querySelector("#squad__rat .player__picture-sr");
+              rodrygo.src = "./images/rodrygo.webp";
+              break;
+            case "cf":
+              playerPosition("squad__fat", playerCard);
+              const mbappe = document.querySelector("#squad__fat .player__picture-sr");
+              mbappe.src = "./images/mbappe.webp";
+              break;
+          }
+      
+          // delete player event
+          const deleteBtn = playerCard.querySelector(".delete__player-icon");
+          deleteBtn.addEventListener("click", () => deletePlayer(player.id));
+      
+          // edit player event
+          const editBtn = playerCard.querySelector(".edit__player-icon");
+          editBtn.addEventListener("click", () => editPlayer(player.id));
+        });
+        const settingIcon = document.querySelectorAll(".setting__icon");
+        settingIcon.forEach((icon) => {
+          icon.addEventListener("click", () => {
+            let parent = icon.parentElement;
+            parent.classList.toggle("active");
+          });
+        });
+      };
+      
+      showPlayerCard();
