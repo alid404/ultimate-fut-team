@@ -550,3 +550,67 @@
       };
       
       showPlayerCard();
+
+        // drag and drop functinalite using Sortable.js libraray
+document.addEventListener("DOMContentLoaded", function () {
+  // Initialize Sortable for defenders
+  const dropItems = document.querySelector(".defenders");
+  if (dropItems) {
+    new Sortable(dropItems, {
+      animation: 350,
+      chosenClass: "sortable-chosen",
+      dragClass: "sortable-drag",
+      // handle: ".squad__player",  
+      group: "shared",
+      swap: true,
+    });
+  }
+
+  // Initialize Sortable for midfielders
+  const midifielder = document.querySelector(".midifielder");
+  if (midifielder) {
+    new Sortable(midifielder, {
+      animation: 350,
+      chosenClass: "sortable-chosen",
+      dragClass: "sortable-drag",
+      // handle: ".squad__player",
+      group: "shared",
+      swap: true,
+    });
+  }
+
+  // Initialize Sortable for attackers
+  const attackers = document.querySelector(".attackers");
+  if (attackers) {
+    new Sortable(attackers, {
+      animation: 350,
+      chosenClass: "sortable-chosen",
+      dragClass: "sortable-drag",
+      group: "shared",
+      swap: true,
+    });
+  }
+
+  // Initialize Sortable for the pitch
+  const pitch = document.querySelector("#substitutes__list");
+  if (pitch) {
+    new Sortable(pitch, {
+      animation: 400,
+      chosenClass: "sortable-chosen",
+      dragClass: "sortable-drag",
+      group: "shared",
+      swap: true,
+    });
+  }
+  const goolkeeper = document.querySelector(".goolkeeper");
+  if (goolkeeper) {
+    new Sortable(goolkeeper, {
+      animation: 400,
+      chosenClass: "sortable-chosen",
+      dragClass: "sortable-drag",
+      group: "shared",
+      swap: true,
+    });
+  }
+});
+  
